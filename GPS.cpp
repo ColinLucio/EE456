@@ -33,6 +33,83 @@ void parseNMEA(const std::string &line) {
     }
 }
 
+void Latitude(const std::string &line) {
+    if (line.rfind("$GNGGA", 0) == 0) {  // Check if line starts with $GNGGA
+        std::istringstream ss(line);
+        std::string token;
+        int index = 0;
+        std::string latitude, longitude, lat_dir, lon_dir;
+
+        while (std::getline(ss, token, ',')) {
+            if (index == 2) latitude = token;        // Latitude
+            else if (index == 3) lat_dir = token;    // Latitude Direction
+            else if (index == 4) longitude = token;  // Longitude
+            else if (index == 5) lon_dir = token;    // Longitude Direction
+            index++;
+        }
+        //std::cout << "Latitude: " << latitude << " " << lat_dir << ", Longitude: " << longitude << " " << lon_dir << std::endl;
+        return latitude
+    }
+}
+
+void Lat_Dir(const std::string &line) {
+    if (line.rfind("$GNGGA", 0) == 0) {  // Check if line starts with $GNGGA
+        std::istringstream ss(line);
+        std::string token;
+        int index = 0;
+        std::string latitude, longitude, lat_dir, lon_dir;
+
+        while (std::getline(ss, token, ',')) {
+            if (index == 2) latitude = token;        // Latitude
+            else if (index == 3) lat_dir = token;    // Latitude Direction
+            else if (index == 4) longitude = token;  // Longitude
+            else if (index == 5) lon_dir = token;    // Longitude Direction
+            index++;
+        }
+        //std::cout << "Latitude: " << latitude << " " << lat_dir << ", Longitude: " << longitude << " " << lon_dir << std::endl;
+        return lat_dir
+    }
+}
+
+void Longitude(const std::string &line) {
+    if (line.rfind("$GNGGA", 0) == 0) {  // Check if line starts with $GNGGA
+        std::istringstream ss(line);
+        std::string token;
+        int index = 0;
+        std::string latitude, longitude, lat_dir, lon_dir;
+
+        while (std::getline(ss, token, ',')) {
+            if (index == 2) latitude = token;        // Latitude
+            else if (index == 3) lat_dir = token;    // Latitude Direction
+            else if (index == 4) longitude = token;  // Longitude
+            else if (index == 5) lon_dir = token;    // Longitude Direction
+            index++;
+        }
+        //std::cout << "Latitude: " << latitude << " " << lat_dir << ", Longitude: " << longitude << " " << lon_dir << std::endl;
+        return longitude
+    }
+}
+
+void Long_Dir(const std::string &line) {
+    if (line.rfind("$GNGGA", 0) == 0) {  // Check if line starts with $GNGGA
+        std::istringstream ss(line);
+        std::string token;
+        int index = 0;
+        std::string latitude, longitude, lat_dir, lon_dir;
+
+        while (std::getline(ss, token, ',')) {
+            if (index == 2) latitude = token;        // Latitude
+            else if (index == 3) lat_dir = token;    // Latitude Direction
+            else if (index == 4) longitude = token;  // Longitude
+            else if (index == 5) lon_dir = token;    // Longitude Direction
+            index++;
+        }
+        //std::cout << "Latitude: " << latitude << " " << lat_dir << ", Longitude: " << longitude << " " << lon_dir << std::endl;
+        return lon_dir
+    }
+}
+
+
 int main() {
     int serial_port = open("/dev/serial0", O_RDWR | O_NOCTTY);
 
