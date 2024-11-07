@@ -145,13 +145,13 @@ int main() {
             //std::cout << line << std::endl; // comment this out when you uncomment parseNMEA function above
         }
         char str[64];
-        sprint(str, parseNMEA(line));
+        sprintf(str, parseNMEA(line));
 
         state = radio.transmit(str);
         if (state == RADIOLIB_ERR_NONE) {
             printf("success!\n");
         }
-        hal->dleay(1000);
+        hal->delay(1000);
 
     }
 
